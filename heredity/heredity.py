@@ -58,13 +58,6 @@ def powerset(s):
             yield set(combo)
 
 def joint_probability(people, one_gene, two_genes, have_trait, *args, **kwargs):
-    # Luu y: Thu tu tham so phai cuc ky chinh xac theo tieu chuan check50
-    # people: dict thong tin gia dinh
-    # one_gene: set nhung nguoi co 1 gen
-    # two_genes: set nhung nguoi co 2 gen
-    # have_trait: set nhung nguoi bieu hien benh
-
-    # Do check50 co the truyen tham so theo cach khac nhau, ta se lay zero_genes bang phep tru
     all_people = set(people.keys())
     zero_genes = all_people - one_gene - two_genes
 
@@ -74,7 +67,7 @@ def joint_probability(people, one_gene, two_genes, have_trait, *args, **kwargs):
         person_genes = (2 if person in two_genes else 1 if person in one_gene else 0)
         person_trait = person in have_trait
 
-        # Neu la the he dau (khong co bo me)
+        # If you are a first-generation parent 
         if people[person]["mother"] is None:
             gene_p = PROBS["gene"][person_genes]
         else:
