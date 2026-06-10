@@ -75,10 +75,8 @@ class CrosswordCreator:
 
         img.save(filename)
 
-    # ======================
-    # CSP FUNCTIONS
-    # ======================
-
+    # CSP functions
+    
     def enforce_node_consistency(self):
         for var in self.domains:
             self.domains[var] = {
